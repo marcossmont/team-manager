@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Contracts\TeamManager.Admin.QueryDataService.Contracts.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Dapper\TeamManager.Admin.QueryDataService.Dapper.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.TransactionalDataService.Contracts\TeamManager.Admin.TransactionalDataService.Contracts.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.TransactionalDataService.EntityFramework\TeamManager.Admin.TransactionalDataService.EntityFramework.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.UseCases.Contracts\TeamManager.Admin.UseCases.Contracts.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.UseCases\TeamManager.Admin.UseCases.csproj" />
+  </ItemGroup>
+
+
+</Project>
