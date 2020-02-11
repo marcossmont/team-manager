@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="1.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Contracts\TeamManager.Admin.QueryDataService.Contracts.csproj" />
     <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Dapper\TeamManager.Admin.QueryDataService.Dapper.csproj" />
     <ProjectReference Include="..\TeamManager.Admin.TransactionalDataService.Contracts\TeamManager.Admin.TransactionalDataService.Contracts.csproj" />

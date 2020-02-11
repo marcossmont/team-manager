@@ -32,6 +32,7 @@ namespace TeamManager.Admin.Api.Controllers
         }
 
         [HttpGet]
+        [Route("all")]
         public GetQueryResult Get(Guid id)
         {
             var result = _getQuery.Query(id);

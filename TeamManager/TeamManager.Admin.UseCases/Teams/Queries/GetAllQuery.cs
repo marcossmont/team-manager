@@ -22,11 +22,12 @@ namespace TeamManager.Admin.UseCases.Teams.Queries
             var teams = _queryDataService.TeamsRepository.GetAll();
             return new GetAllQueryResult()
             {
-                Teams = teams.Select(t => new Team()
+                Teams = teams.Select(team => new TeamModel()
                 {
-                    Name = t.Name,
-                    CreateSharePointSite = t.CreateSharePointSite,
-                    CreateTeamsChannel = t.CreateTeamsChannel
+                    Id = team.Id,
+                    Name = team.Name,
+                    CreateSharePointSite = team.CreateSharePointSite,
+                    CreateTeamsChannel = team.CreateTeamsChannel
                 })
             };
         }

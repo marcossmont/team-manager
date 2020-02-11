@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TeamManager.Admin.QueryDataService.Contracts;
 using TeamManager.Admin.UseCases.Contracts.Teams.Queries;
+using static TeamManager.Admin.UseCases.Contracts.Teams.Queries.GetQueryResult;
 
 namespace TeamManager.Admin.UseCases.Teams.Queries
 {
@@ -20,7 +21,14 @@ namespace TeamManager.Admin.UseCases.Teams.Queries
             var team = _queryDataService.TeamsRepository.Get(id);
             return new GetQueryResult()
             {
-                Team = team
+                Team = new TeamModel()
+                {
+                    Id = team.Id,
+                    Desctiption = team.Description,
+                    Name = team.Name,
+                    CreateSharePointSite = team.CreateSharePointSite,
+                    CreateTeamsChannel = team.CreateTeamsChannel
+                }
             };
         }
     }

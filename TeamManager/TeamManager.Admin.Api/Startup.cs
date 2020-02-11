@@ -11,7 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TeamManager.Admin.QueryDataService.Contracts;
+using TeamManager.Admin.QueryDataService.Dapper;
 using TeamManager.Admin.TransactionalDataService.Contracts;
+using TeamManager.Admin.TransactionalDataService.EntityFramework;
 using TeamManager.Admin.UseCases.Contracts.Teams.Commands;
 using TeamManager.Admin.UseCases.Contracts.Teams.Queries;
 using TeamManager.Admin.UseCases.Teams.Commands;
@@ -35,8 +37,12 @@ namespace TeamManager.Admin.Api
             services.AddScoped<IGetAllQuery, GetAllQuery>();
             services.AddScoped<IGetQuery, GetQuery>();
 
-            services.AddScoped<ITransactionalDataService>(new TransactionalDataService(""));
+            var businessConnectionString = Configuration.GetConnectionString("BusinessDatabase");
 
+            services.AddScoped<ITransactionalDataService, EntityFrameworkTransactionalDataService>(c =>
+                new EntityFrameworkTransactionalDataService(businessConnectionString));
+            services.AddScoped<IQueryDataService, DapperQueryDataService>(c =>
+                new DapperQueryDataService(businessConnectionString));
 
             services.AddControllers();
         }

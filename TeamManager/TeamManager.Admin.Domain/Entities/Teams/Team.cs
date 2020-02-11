@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeamManager.Admin.Domain.Entities.Teams.Exceptions;
+using TeamManager.Admin.Domain.ValueObjects;
 
 namespace TeamManager.Admin.Domain.Entities.Teams
 {

@@ -8,11 +8,11 @@ using TeamManager.Admin.QueryDataService.Dapper.Repositories;
 
 namespace TeamManager.Admin.QueryDataService.Dapper
 {
-    public class QueryDataService : IQueryDataService
+    public class DapperQueryDataService : IQueryDataService
     {
         private readonly SqlConnection _connection;
 
-        public QueryDataService(string connectionString)
+        public DapperQueryDataService(string connectionString)
         {
             _connection = new SqlConnection(connectionString);
         }
