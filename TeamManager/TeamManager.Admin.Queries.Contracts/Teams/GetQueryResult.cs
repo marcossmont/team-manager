@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeamManager.Admin.UseCases.Contracts.Teams.Queries
+namespace TeamManager.Admin.Queries.Contracts.Teams
 {
     public class GetQueryResult
     {
@@ -8,12 +8,10 @@ namespace TeamManager.Admin.UseCases.Contracts.Teams.Queries
 
         public class TeamModel
         {
-            public Guid Id { get; set; }
             public string Desctiption { get; set; }
             public string Name { get; set; }
             public bool CreateSharePointSite { get; set; }
             public bool CreateTeamsChannel { get; set; }
-            
         }
     }
 }

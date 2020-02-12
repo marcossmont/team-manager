@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TeamManager.Admin.Domain.Entities.Teams;
+using TeamManager.Admin.Domain.ValueObjects;
 
 namespace TeamManager.Admin.TransactionalDataService.EntityFramework.Mappings
 {
@@ -13,9 +14,7 @@ namespace TeamManager.Admin.TransactionalDataService.EntityFramework.Mappings
         {
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Name).IsRequired();
-            builder.OwnsOne(t => t.Email, email => {
-                email.Property(e => e.Address).IsRequired();
-            });
+            builder.Property(t => t.Email).IsRequired().HasConversion(e => e.Address, e => new Email(e));
         }
     }
 }

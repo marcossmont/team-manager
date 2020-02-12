@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TeamManager.Admin.Queries.Contracts\TeamManager.Admin.Queries.Contracts.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.Queries\TeamManager.Admin.Queries.csproj" />
     <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Contracts\TeamManager.Admin.QueryDataService.Contracts.csproj" />
     <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Dapper\TeamManager.Admin.QueryDataService.Dapper.csproj" />
     <ProjectReference Include="..\TeamManager.Admin.TransactionalDataService.Contracts\TeamManager.Admin.TransactionalDataService.Contracts.csproj" />

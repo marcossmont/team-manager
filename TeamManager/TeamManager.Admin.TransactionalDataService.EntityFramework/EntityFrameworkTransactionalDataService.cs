@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TeamManager.Admin.TransactionalDataService.Contracts;
+﻿using TeamManager.Admin.TransactionalDataService.Contracts;
 using TeamManager.Admin.TransactionalDataService.Contracts.Repositories;
 using TeamManager.Admin.TransactionalDataService.EntityFramework.Repositories;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TeamManager.Admin.UseCases.Contracts.Teams.Queries
+namespace TeamManager.Admin.Queries.Contracts.Teams
 {
     public class GetAllQueryResult
     {

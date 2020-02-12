@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using TeamManager.Admin.Domain.Entities.Teams;
 using TeamManager.Admin.Domain.Entities.Teams.Exceptions;
+using TeamManager.Admin.Domain.ValueObjects;
 
 namespace TeamManager.Admin.Domain.Tests.Entities.Teams
 {
@@ -16,7 +17,7 @@ namespace TeamManager.Admin.Domain.Tests.Entities.Teams
             var name = "John Smith";
             var email = "jsmith@mail.com";
 
-            Administrator administrator = new Administrator(name, email);
+            Administrator administrator = new Administrator(name, new Email(email));
 
             Assert.AreEqual(name, administrator.Name);
             Assert.IsNotNull(administrator.Email);
@@ -27,7 +28,7 @@ namespace TeamManager.Admin.Domain.Tests.Entities.Teams
         {
             var email = "jsmith@mail.com";
 
-            Assert.ThrowsException<AdministratorNameIsRequiredException>(() => new Administrator(null, email));
+            Assert.ThrowsException<AdministratorNameIsRequiredException>(() => new Administrator(null, new Email(email)));
         }
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TeamManager.Admin.UseCases.Contracts.Teams.Queries
+namespace TeamManager.Admin.Queries.Contracts.Teams
 {
-    public interface IGetQuery 
+    public interface IGetQuery
     {
         GetQueryResult Query(Guid id);
     }

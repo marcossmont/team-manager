@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeamManager.Admin.Queries.Contracts\TeamManager.Admin.Queries.Contracts.csproj" />
+    <ProjectReference Include="..\TeamManager.Admin.QueryDataService.Contracts\TeamManager.Admin.QueryDataService.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

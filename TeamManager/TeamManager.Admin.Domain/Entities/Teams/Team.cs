@@ -36,7 +36,7 @@ namespace TeamManager.Admin.Domain.Entities.Teams
 
         public void AddAdministrador(string name, string emailAddress)
         {
-            administrators.Add(new Administrator(name, emailAddress));
+            administrators.Add(new Administrator(name, new Email(emailAddress)));
         }
     }
 }

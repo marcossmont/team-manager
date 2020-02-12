@@ -1,23 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TeamManager.Admin.QueryDataService.Contracts;
+using TeamManager.Admin.Queries.Contracts.Teams;
+using TeamManager.Admin.Queries.Teams;
+using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get;
 using TeamManager.Admin.QueryDataService.Dapper;
+using TeamManager.Admin.QueryDataService.Dapper.DataAccess.Teams;
 using TeamManager.Admin.TransactionalDataService.Contracts;
 using TeamManager.Admin.TransactionalDataService.EntityFramework;
 using TeamManager.Admin.UseCases.Contracts.Teams.Commands;
-using TeamManager.Admin.UseCases.Contracts.Teams.Queries;
 using TeamManager.Admin.UseCases.Teams.Commands;
-using TeamManager.Admin.UseCases.Teams.Queries;
 
 namespace TeamManager.Admin.Api
 {
@@ -34,15 +28,19 @@ namespace TeamManager.Admin.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICreateCommandHandler, CreateCommandHandler>();
+            
             services.AddScoped<IGetAllQuery, GetAllQuery>();
             services.AddScoped<IGetQuery, GetQuery>();
+
+            services.AddScoped<GetAllQueryDataAccess, GetAllQueryDataAccess>();
+            services.AddScoped<IGetQueryDataAccess, GetQueryDataAccess>();
 
             var businessConnectionString = Configuration.GetConnectionString("BusinessDatabase");
 
             services.AddScoped<ITransactionalDataService, EntityFrameworkTransactionalDataService>(c =>
                 new EntityFrameworkTransactionalDataService(businessConnectionString));
-            services.AddScoped<IQueryDataService, DapperQueryDataService>(c =>
-                new DapperQueryDataService(businessConnectionString));
+            
+            services.AddScoped(c => new DapperQueryDataService(businessConnectionString));
 
             services.AddControllers();
         }

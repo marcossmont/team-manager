@@ -13,6 +13,9 @@ namespace TeamManager.Admin.TransactionalDataService.EntityFramework.Mappings
         {
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Name).IsRequired();
+            builder.Property(t => t.Description);
+            builder.Property(t => t.CreateSharePointSite).IsRequired();
+            builder.Property(t => t.CreateTeamsChannel).IsRequired();
         }
     }
 }

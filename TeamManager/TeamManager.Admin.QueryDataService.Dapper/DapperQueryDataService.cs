@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
-using TeamManager.Admin.QueryDataService.Contracts;
-using TeamManager.Admin.QueryDataService.Contracts.Repositories;
-using TeamManager.Admin.QueryDataService.Dapper.Repositories;
+﻿using System.Data.SqlClient;
 
 namespace TeamManager.Admin.QueryDataService.Dapper
 {
-    public class DapperQueryDataService : IQueryDataService
+    public class DapperQueryDataService
     {
-        private readonly SqlConnection _connection;
+        internal readonly SqlConnection _connection;
 
         public DapperQueryDataService(string connectionString)
         {
             _connection = new SqlConnection(connectionString);
         }
-
-        public ITeamsRepository TeamsRepository => new TeamsRepository(_connection);
     }
 }

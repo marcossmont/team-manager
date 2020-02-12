@@ -13,13 +13,13 @@ namespace TeamManager.Admin.TransactionalDataService.EntityFramework
             _connectionString = connectionString ?? throw new System.ArgumentNullException(nameof(connectionString));
         }
 
-        public TransactionalContext(DbContextOptions options) : base(options)
+        internal TransactionalContext(DbContextOptions options) : base(options)
         {
         }
 
         public DbSet<Team> Teams { get; }
         
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TeamManagerBusiness;Trusted_Connection=True");
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer(_connectionString);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

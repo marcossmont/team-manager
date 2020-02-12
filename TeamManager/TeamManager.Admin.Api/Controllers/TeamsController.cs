@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using TeamManager.Admin.Queries.Contracts.Teams;
 using TeamManager.Admin.UseCases.Contracts.Teams.Commands;
-using TeamManager.Admin.UseCases.Contracts.Teams.Queries;
 
 namespace TeamManager.Admin.Api.Controllers
 {
