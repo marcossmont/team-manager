@@ -3,24 +3,24 @@ using System.Linq;
 using TeamManager.Admin.Queries.Contracts.Teams;
 using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get;
 using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.GetAll;
-using static TeamManager.Admin.Queries.Contracts.Teams.GetAllQueryResult;
+using static TeamManager.Admin.Queries.Contracts.Teams.GetAllTeamsQueryResult;
 
 namespace TeamManager.Admin.Queries.Teams
 {
-    public class GetAllQuery : IGetAllQuery
+    public class GetAllTeamsQuery : IGetAllTeamsQuery
     {
-        private readonly IGetAllQueryDataAccess _dataAccess;
+        private readonly IGetAllTeamsQueryDataAccess _dataAccess;
 
-        public GetAllQuery(IGetAllQueryDataAccess dataAccess)
+        public GetAllTeamsQuery(IGetAllTeamsQueryDataAccess dataAccess)
         {
             _dataAccess = dataAccess ?? throw new ArgumentNullException(nameof(dataAccess));
         }
 
         
-        public GetAllQueryResult Query()
+        public GetAllTeamsQueryResult Query()
         {
             var teams = _dataAccess.Query();
-            return new GetAllQueryResult()
+            return new GetAllTeamsQueryResult()
             {
                 Teams = teams.Select(team => new TeamModel()
                 {

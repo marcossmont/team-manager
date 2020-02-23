@@ -4,11 +4,16 @@ namespace TeamManager.Admin.QueryDataService.Dapper
 {
     public class DapperQueryDataService
     {
-        internal readonly SqlConnection _connection;
+        private readonly string connectionString;
 
         public DapperQueryDataService(string connectionString)
         {
-            _connection = new SqlConnection(connectionString);
+            this.connectionString = connectionString ?? throw new System.ArgumentNullException(nameof(connectionString));
+        }
+
+        public SqlConnection GetSqlConnection()
+        {
+            return new SqlConnection(connectionString);
         }
     }
 }

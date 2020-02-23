@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.GetAll
 {
-    public interface IGetAllQueryDataAccess
+    public interface IGetAllTeamsQueryDataAccess
     {
-        IEnumerable<GetAllOutput> Query();
+        IEnumerable<GetAllTeamsQueryDataAccessOutput> Query();
     }
 }

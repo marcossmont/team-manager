@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TeamManager.Admin.Queries.Contracts.Teams;
 using TeamManager.Admin.Queries.Teams;
+using TeamManager.Admin.QueryDataService.Contracts.DataAccess;
 using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get;
+using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.GetAll;
 using TeamManager.Admin.QueryDataService.Dapper;
 using TeamManager.Admin.QueryDataService.Dapper.DataAccess.Teams;
 using TeamManager.Admin.TransactionalDataService.Contracts;
@@ -27,22 +30,26 @@ namespace TeamManager.Admin.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICreateCommandHandler, CreateCommandHandler>();
-            
-            services.AddScoped<IGetAllQuery, GetAllQuery>();
-            services.AddScoped<IGetQuery, GetQuery>();
-
-            services.AddScoped<GetAllQueryDataAccess, GetAllQueryDataAccess>();
-            services.AddScoped<IGetQueryDataAccess, GetQueryDataAccess>();
-
             var businessConnectionString = Configuration.GetConnectionString("BusinessDatabase");
-
-            services.AddScoped<ITransactionalDataService, EntityFrameworkTransactionalDataService>(c =>
-                new EntityFrameworkTransactionalDataService(businessConnectionString));
-            
+            //services.AddDbContext<TransactionalContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TeamManagerBusiness;Trusted_Connection=True"));
+            services.AddDbContext<TransactionalContext>(options => options.UseSqlServer(businessConnectionString));
+            services.AddScoped<ITransactionalDataService, EntityFrameworkTransactionalDataService>();
             services.AddScoped(c => new DapperQueryDataService(businessConnectionString));
 
+            services.AddScoped<ICreateCommandHandler, CreateCommandHandler>();
+
+            services.AddScoped<IGetAllTeamsQuery, GetAllTeamsQuery>();
+            services.AddScoped<IGetTeamQuery, GetTeamQuery>();
+
+            services.AddScoped<IGetTeamQueryDataAccess, GetTeamQueryDataAccess>();
+            services.AddScoped<IGetAllTeamsQueryDataAccess, GetAllTeamsQueryDataAccess>();
+
+            services.AddScoped<GetAllTeamsQueryDataAccess, GetAllTeamsQueryDataAccess>();
+            services.AddScoped<IGetTeamQueryDataAccess, GetTeamQueryDataAccess>();
+
+            
             services.AddControllers();
+            services.add
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,8 +2,8 @@
 
 namespace TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get
 {
-    public interface IGetQueryDataAccess
+    public interface IGetTeamQueryDataAccess
     {
-        GetOutput Query(Guid id);
+        GetTeamQueryDataAccessOutput Query(Guid id);
     }
 }

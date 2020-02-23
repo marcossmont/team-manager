@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TeamManager.Admin.Queries.Contracts.Teams
 {
-    public interface IGetQuery
+    public interface IGetAllTeamsQuery
     {
-        GetQueryResult Query(Guid id);
+        GetAllTeamsQueryResult Query();
     }
 }

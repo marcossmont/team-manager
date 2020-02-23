@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TeamManager.Admin.Queries.Contracts.Teams
 {
-    public class GetAllQueryResult
+    public class GetAllTeamsQueryResult
     {
         public IEnumerable<TeamModel> Teams { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TeamManager.Admin.Queries.Contracts.Teams;
 using TeamManager.Admin.UseCases.Contracts.Teams.Commands;
@@ -6,14 +7,14 @@ using TeamManager.Admin.UseCases.Contracts.Teams.Commands;
 namespace TeamManager.Admin.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TeamsController : ControllerBase
     {
         private readonly ICreateCommandHandler _createCommandHandler;
-        private readonly IGetAllQuery _getAllQuery;
-        private readonly IGetQuery _getQuery;
+        private readonly IGetAllTeamsQuery _getAllQuery;
+        private readonly IGetTeamQuery _getQuery;
 
-        public TeamsController(ICreateCommandHandler createCommandHandler, IGetAllQuery getAllQuery, IGetQuery getQuery)
+        public TeamsController(ICreateCommandHandler createCommandHandler, IGetAllTeamsQuery getAllQuery, IGetTeamQuery getQuery)
         {
             _createCommandHandler = createCommandHandler ?? throw new ArgumentNullException(nameof(createCommandHandler));
             _getAllQuery = getAllQuery ?? throw new ArgumentNullException(nameof(getAllQuery));
@@ -21,27 +22,25 @@ namespace TeamManager.Admin.Api.Controllers
         }
 
         [HttpGet]
-        public GetAllQueryResult GetAll()
+        public IActionResult GetAll()
         {
             var result = _getAllQuery.Query();
-            return result;
+            return Ok(result);
         }
 
         [HttpGet]
-        [Route("all")]
-        public GetQueryResult Get(Guid id)
+        [Route("{id}")]
+        public IActionResult Get(Guid id)
         {
             var result = _getQuery.Query(id);
-            return result;
+            return Ok(result);
         }
 
         [HttpPost]
-        public CreateCommandResult Create(CreateCommand createCommand)
+        public IActionResult Create(CreateCommand createCommand)
         {
             var result = _createCommandHandler.Execute(createCommand);
-            return result;
+            return Created($"api/teams/{result.Id}", result);
         }
-
-
     }
 }

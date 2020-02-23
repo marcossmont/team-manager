@@ -11,7 +11,7 @@ namespace TeamManager.Admin.TransactionalDataService.EntityFramework
         public TransactionalContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<TransactionalContext>();
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TeamManagerBusiness;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer();
 
             return new TransactionalContext(optionsBuilder.Options);
         }

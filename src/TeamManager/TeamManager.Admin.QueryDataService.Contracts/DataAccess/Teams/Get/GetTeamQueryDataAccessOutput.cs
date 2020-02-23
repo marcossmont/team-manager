@@ -1,6 +1,6 @@
 ﻿namespace TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get
 {
-    public class GetOutput
+    public class GetTeamQueryDataAccessOutput
     {
         public string Name { get; set; }
         public string Description { get; set; }

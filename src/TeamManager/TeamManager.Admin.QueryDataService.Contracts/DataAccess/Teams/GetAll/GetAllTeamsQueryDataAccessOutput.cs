@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.GetAll
 {
-    public class GetAllOutput
+    public class GetAllTeamsQueryDataAccessOutput
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

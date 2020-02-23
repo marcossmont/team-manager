@@ -8,9 +8,9 @@ namespace TeamManager.Admin.TransactionalDataService.EntityFramework
     {
         private readonly TransactionalContext _context;
 
-        public EntityFrameworkTransactionalDataService(string connectionString)
+        public EntityFrameworkTransactionalDataService(TransactionalContext context)
         {
-            _context = new TransactionalContext(connectionString);
+            _context = context ?? throw new System.ArgumentNullException(nameof(context));
         }
         public ITeamsRepository TeamsRepository => new TeamsRepository(_context);
 

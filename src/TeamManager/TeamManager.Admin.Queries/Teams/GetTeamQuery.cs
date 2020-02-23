@@ -1,23 +1,23 @@
 ﻿using System;
 using TeamManager.Admin.Queries.Contracts.Teams;
 using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get;
-using static TeamManager.Admin.Queries.Contracts.Teams.GetQueryResult;
+using static TeamManager.Admin.Queries.Contracts.Teams.GetTeamQueryResult;
 
 namespace TeamManager.Admin.Queries.Teams
 {
-    public class GetQuery : IGetQuery
+    public class GetTeamQuery : IGetTeamQuery
     {
-        private readonly IGetQueryDataAccess _dataAccess;
+        private readonly IGetTeamQueryDataAccess _dataAccess;
 
-        public GetQuery(IGetQueryDataAccess dataAccess)
+        public GetTeamQuery(IGetTeamQueryDataAccess dataAccess)
         {
             _dataAccess = dataAccess ?? throw new ArgumentNullException(nameof(dataAccess));
         }
 
-        public GetQueryResult Query(Guid id)
+        public GetTeamQueryResult Query(Guid id)
         {
             var team = _dataAccess.Query(id);
-            return new GetQueryResult()
+            return new GetTeamQueryResult()
             {
                 Team = new TeamModel()
                 {

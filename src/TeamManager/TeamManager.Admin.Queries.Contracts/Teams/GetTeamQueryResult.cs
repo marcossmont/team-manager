@@ -2,7 +2,7 @@
 
 namespace TeamManager.Admin.Queries.Contracts.Teams
 {
-    public class GetQueryResult
+    public class GetTeamQueryResult
     {
         public TeamModel Team { get; set; }
 

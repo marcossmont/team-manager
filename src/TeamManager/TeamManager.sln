@@ -37,9 +37,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{BCDD62B1-2576-4758-A324-2BDE855CB635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Admin.Queries", "TeamManager.Admin.Queries\TeamManager.Admin.Queries.csproj", "{DA76000D-F266-49C7-AE8E-4A6790DC0D81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Admin.Queries", "TeamManager.Admin.Queries\TeamManager.Admin.Queries.csproj", "{DA76000D-F266-49C7-AE8E-4A6790DC0D81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.Admin.Queries.Contracts", "TeamManager.Admin.Queries.Contracts\TeamManager.Admin.Queries.Contracts.csproj", "{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Admin.Queries.Contracts", "TeamManager.Admin.Queries.Contracts\TeamManager.Admin.Queries.Contracts.csproj", "{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA1CE4BF-290D-48F0-B08B-00A37BE54605}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
