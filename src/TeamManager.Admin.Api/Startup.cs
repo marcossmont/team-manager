@@ -15,6 +15,7 @@ using TeamManager.Admin.TransactionalDataService.Contracts;
 using TeamManager.Admin.TransactionalDataService.EntityFramework;
 using TeamManager.Admin.UseCases.Contracts.Teams.Commands;
 using TeamManager.Admin.UseCases.Teams.Commands;
+using TeamManager.Core.BusPublisher;
 
 namespace TeamManager.Admin.Api
 {
@@ -31,10 +32,12 @@ namespace TeamManager.Admin.Api
         public void ConfigureServices(IServiceCollection services)
         {
             var businessConnectionString = Configuration.GetConnectionString("BusinessDatabase");
-            //services.AddDbContext<TransactionalContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TeamManagerBusiness;Trusted_Connection=True"));
             services.AddDbContext<TransactionalContext>(options => options.UseSqlServer(businessConnectionString));
             services.AddScoped<ITransactionalDataService, EntityFrameworkTransactionalDataService>();
             services.AddScoped(c => new DapperQueryDataService(businessConnectionString));
+
+            var teamsQueueConnectionString = Configuration.GetConnectionString("TeamsQueue");
+            services.AddScoped<IBusPublisher>(c => new AzureServiceBusPublisher(teamsQueueConnectionString));
 
             services.AddScoped<ICreateCommandHandler, CreateCommandHandler>();
 

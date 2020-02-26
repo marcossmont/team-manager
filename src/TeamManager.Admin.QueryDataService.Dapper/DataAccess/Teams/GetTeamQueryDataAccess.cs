@@ -23,7 +23,7 @@ namespace TeamManager.Admin.QueryDataService.Dapper.DataAccess.Teams
                 var query = "select Name, Description, CreateSharePointSite, CreateTeamsChannel from Teams where Id = @Id";
                 var parameters = new DynamicParameters(new { Id = id });
 
-                return connection.QueryFirst<GetTeamQueryDataAccessOutput>(query, parameters);
+                return connection.QueryFirstOrDefault<GetTeamQueryDataAccessOutput>(query, parameters);
             }
         }
     }

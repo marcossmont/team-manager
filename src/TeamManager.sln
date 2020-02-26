@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{DB793E08-1770-48DF-9446-1903B3A41EB8}"
 EndProject
@@ -40,6 +40,27 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Admin.Queries", "TeamManager.Admin.Queries\TeamManager.Admin.Queries.csproj", "{DA76000D-F266-49C7-AE8E-4A6790DC0D81}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Admin.Queries.Contracts", "TeamManager.Admin.Queries.Contracts\TeamManager.Admin.Queries.Contracts.csproj", "{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Search", "Search", "{4C6B1196-5B7A-409F-8376-073F3637674E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Search.Api", "TeamManager.Search.Api\TeamManager.Search.Api.csproj", "{4ADEE66B-0AE5-4820-AEA0-CC25B386DC93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{6EC7A774-9AC9-4600-B405-2B410813EFE8}"
+	ProjectSection(SolutionItems) = preProject
+		TeamManager.Search.QueryDataService.CosmosDb\CosmosDbService.cs = TeamManager.Search.QueryDataService.CosmosDb\CosmosDbService.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{217DE909-9526-4A4B-A0C4-972EB0961002}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Search.Queries", "TeamManager.Search.Queries\TeamManager.Search.Queries.csproj", "{EA2DCE6F-A39A-4B74-A338-E179CBB38771}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Search.Queries.Contracts", "TeamManager.Search.Queries.Contracts\TeamManager.Search.Queries.Contracts.csproj", "{986BA9A9-EA01-42AC-8CF9-1EB6F34E2C3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Search.QueryDataService.CosmosDb", "TeamManager.Search.QueryDataService.CosmosDb\TeamManager.Search.QueryDataService.CosmosDb.csproj", "{75419781-DEC3-4894-A60A-729C566813CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Search.QueryDataService.Contracts", "TeamManager.Search.QueryDataService.Contracts\TeamManager.Search.QueryDataService.Contracts.csproj", "{ADC2F883-1385-4F27-88F0-A27EDF774C64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.Core.Tests", "TeamManager.Core.Tests\TeamManager.Core.Tests.csproj", "{EC06C616-139B-446E-A8FE-2090B32A7BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +116,30 @@ Global
 		{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ADEE66B-0AE5-4820-AEA0-CC25B386DC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ADEE66B-0AE5-4820-AEA0-CC25B386DC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ADEE66B-0AE5-4820-AEA0-CC25B386DC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ADEE66B-0AE5-4820-AEA0-CC25B386DC93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA2DCE6F-A39A-4B74-A338-E179CBB38771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2DCE6F-A39A-4B74-A338-E179CBB38771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2DCE6F-A39A-4B74-A338-E179CBB38771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2DCE6F-A39A-4B74-A338-E179CBB38771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986BA9A9-EA01-42AC-8CF9-1EB6F34E2C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986BA9A9-EA01-42AC-8CF9-1EB6F34E2C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986BA9A9-EA01-42AC-8CF9-1EB6F34E2C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986BA9A9-EA01-42AC-8CF9-1EB6F34E2C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75419781-DEC3-4894-A60A-729C566813CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75419781-DEC3-4894-A60A-729C566813CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75419781-DEC3-4894-A60A-729C566813CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75419781-DEC3-4894-A60A-729C566813CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC2F883-1385-4F27-88F0-A27EDF774C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC2F883-1385-4F27-88F0-A27EDF774C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC2F883-1385-4F27-88F0-A27EDF774C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC2F883-1385-4F27-88F0-A27EDF774C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC06C616-139B-446E-A8FE-2090B32A7BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC06C616-139B-446E-A8FE-2090B32A7BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC06C616-139B-446E-A8FE-2090B32A7BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC06C616-139B-446E-A8FE-2090B32A7BA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +162,13 @@ Global
 		{BCDD62B1-2576-4758-A324-2BDE855CB635} = {DB793E08-1770-48DF-9446-1903B3A41EB8}
 		{DA76000D-F266-49C7-AE8E-4A6790DC0D81} = {BCDD62B1-2576-4758-A324-2BDE855CB635}
 		{05A62F73-F21B-4A9F-8F18-86EBD35E0A3E} = {BCDD62B1-2576-4758-A324-2BDE855CB635}
+		{4ADEE66B-0AE5-4820-AEA0-CC25B386DC93} = {4C6B1196-5B7A-409F-8376-073F3637674E}
+		{6EC7A774-9AC9-4600-B405-2B410813EFE8} = {4C6B1196-5B7A-409F-8376-073F3637674E}
+		{217DE909-9526-4A4B-A0C4-972EB0961002} = {4C6B1196-5B7A-409F-8376-073F3637674E}
+		{EA2DCE6F-A39A-4B74-A338-E179CBB38771} = {6EC7A774-9AC9-4600-B405-2B410813EFE8}
+		{986BA9A9-EA01-42AC-8CF9-1EB6F34E2C3F} = {6EC7A774-9AC9-4600-B405-2B410813EFE8}
+		{75419781-DEC3-4894-A60A-729C566813CF} = {217DE909-9526-4A4B-A0C4-972EB0961002}
+		{ADC2F883-1385-4F27-88F0-A27EDF774C64} = {217DE909-9526-4A4B-A0C4-972EB0961002}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7804380-FB8A-484E-BC82-78D43F36918F}

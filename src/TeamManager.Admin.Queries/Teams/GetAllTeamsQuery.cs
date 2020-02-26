@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TeamManager.Admin.Queries.Contracts.Teams;
-using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get;
 using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.GetAll;
-using static TeamManager.Admin.Queries.Contracts.Teams.GetAllTeamsQueryResult;
 
 namespace TeamManager.Admin.Queries.Teams
 {
@@ -16,13 +14,12 @@ namespace TeamManager.Admin.Queries.Teams
             _dataAccess = dataAccess ?? throw new ArgumentNullException(nameof(dataAccess));
         }
 
-        
         public GetAllTeamsQueryResult Query()
         {
             var teams = _dataAccess.Query();
             return new GetAllTeamsQueryResult()
             {
-                Teams = teams.Select(team => new TeamModel()
+                Teams = teams.Select(team => new GetAllTeamsQueryResult.TeamModel()
                 {
                     Id = team.Id,
                     Name = team.Name,

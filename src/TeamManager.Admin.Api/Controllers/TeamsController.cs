@@ -25,6 +25,9 @@ namespace TeamManager.Admin.Api.Controllers
         public IActionResult GetAll()
         {
             var result = _getAllQuery.Query();
+            if (result.Teams == null || result.Teams.Count() == 0)
+                return NotFound();
+
             return Ok(result);
         }
 
@@ -33,6 +36,9 @@ namespace TeamManager.Admin.Api.Controllers
         public IActionResult Get(Guid id)
         {
             var result = _getQuery.Query(id);
+            if (result.Team == null)
+                return NotFound();
+
             return Ok(result);
         }
 

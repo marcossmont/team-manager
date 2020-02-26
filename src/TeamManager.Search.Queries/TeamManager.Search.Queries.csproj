@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeamManager.Search.Queries.Contracts\TeamManager.Search.Queries.Contracts.csproj" />
+    <ProjectReference Include="..\TeamManager.Search.QueryDataService.Contracts\TeamManager.Search.QueryDataService.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,6 @@
 ﻿using System;
 using TeamManager.Admin.Queries.Contracts.Teams;
 using TeamManager.Admin.QueryDataService.Contracts.DataAccess.Teams.Get;
-using static TeamManager.Admin.Queries.Contracts.Teams.GetTeamQueryResult;
 
 namespace TeamManager.Admin.Queries.Teams
 {
@@ -17,9 +16,13 @@ namespace TeamManager.Admin.Queries.Teams
         public GetTeamQueryResult Query(Guid id)
         {
             var team = _dataAccess.Query(id);
+
+            if (team == null)
+                return new GetTeamQueryResult();
+
             return new GetTeamQueryResult()
             {
-                Team = new TeamModel()
+                Team = new GetTeamQueryResult.TeamModel()
                 {
                     Desctiption = team.Description,
                     Name = team.Name,
