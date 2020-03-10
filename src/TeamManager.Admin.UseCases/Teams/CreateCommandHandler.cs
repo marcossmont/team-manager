@@ -35,7 +35,7 @@ namespace TeamManager.Admin.UseCases.Teams.Commands
                 Description = input.Description,
                 CreateSharePointSite = input.CreateSharePointSite,
                 CreateTeamsChannel = input.CreateTeamsChannel
-            });
+            }).GetAwaiter();
 
             return new CreateCommandResult()
             {

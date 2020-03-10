@@ -14,19 +14,35 @@ namespace TeamManager.Core.BusPublisher
 
         public AzureBusPublisher(string connectionString)
         {
-            this.connectionString = connectionString;
+            this.connectionString = connectionString ?? throw new AzureBusPublisherException("The connectionString parameter is null.");
         }
 
-        public Task Publish<T>(string queueName, T messageObject, IDictionary<string, object> headers)
-        {   
-            TopicClient topicClient = new TopicClient(this.connectionString, queueName, new RetryExponential(TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(30), 3));
-            var message = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(messageObject)));
-            foreach (var key in headers.Keys)
+        public async Task Publish<T>(string topicName, T messageObject, IDictionary<string, object> headers = null)
+        {
+            TopicClient topicClient = null;
+            try
             {
-                message.UserProperties.Add(key, headers[key]);
-            }
+                topicClient = new TopicClient(this.connectionString, topicName, new RetryExponential(TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(30), 3));
+                var message = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(messageObject)));
+                if (headers != null)
+                    foreach (var key in headers.Keys)
+                    {
+                        message.UserProperties.Add(key, headers[key]);
+                    }
 
-            return topicClient.SendAsync(message);
+                await topicClient.SendAsync(message);
+            }
+            catch (Exception ex)
+            {
+                throw new AzureBusPublisherException($"Error when publishing message {JsonConvert.SerializeObject(messageObject)} at topic {topicName}. See inner exception for more details.", ex);
+            }
+            finally
+            {
+                if (topicClient != null && !topicClient.IsClosedOrClosing)
+                {
+                    await topicClient.CloseAsync();
+                }
+            }
         }
     }
 }

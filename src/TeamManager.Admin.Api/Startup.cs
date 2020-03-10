@@ -36,8 +36,8 @@ namespace TeamManager.Admin.Api
             services.AddScoped<ITransactionalDataService, EntityFrameworkTransactionalDataService>();
             services.AddScoped(c => new DapperQueryDataService(businessConnectionString));
 
-            var teamsQueueConnectionString = Configuration.GetConnectionString("TeamsQueue");
-            services.AddScoped<IBusPublisher>(c => new AzureServiceBusPublisher(teamsQueueConnectionString));
+            var teamsQueueConnectionString = Configuration.GetConnectionString("BusConnectionString");
+            services.AddScoped<IBusPublisher>(c => new AzureBusPublisher(teamsQueueConnectionString));
 
             services.AddScoped<ICreateCommandHandler, CreateCommandHandler>();
 
