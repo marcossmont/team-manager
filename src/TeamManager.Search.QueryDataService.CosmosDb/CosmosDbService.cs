@@ -15,7 +15,7 @@ namespace TeamManager.Search.QueryDataService.CosmosDb
                 EnabledSslProtocols = SslProtocols.Tls12 
             };
             var mongoClient = new MongoClient(settings);
-            Database = mongoClient.GetDatabase("teams");
+            Database = mongoClient.GetDatabase(databaseName);
         }
     }
 }

@@ -10,15 +10,15 @@ namespace TeamManager.Search.QueryDataService.CosmosDb.Teams
     {
         private readonly IMongoDatabase _database;
 
-        public GetTeamsQueryDataAccess(IMongoDatabase database)
+        public GetTeamsQueryDataAccess(CosmosDbService cosmosDbService)
         {
-            _database = database ?? throw new ArgumentNullException(nameof(database));
+            _database = cosmosDbService.Database;
         }
 
-        public IEnumerable<GetTeamsQueryDataAccessOutput> Query(GetTeamsQueryDataAccessInput parameters)
+        public List<GetTeamsQueryDataAccessOutput> Query(GetTeamsQueryDataAccessInput parameters)
         {
             var teams = _database.GetCollection<GetTeamsQueryDataAccessOutput>("teams");
-            return teams.Find(t => t.Name.Contains(parameters.Name) || t.Description.Contains(parameters.Description)).ToEnumerable();
+            return teams.Find(t => t.Name.Contains(parameters.Name) || t.Description.Contains(parameters.Description)).ToList();
         }
     }
 }
