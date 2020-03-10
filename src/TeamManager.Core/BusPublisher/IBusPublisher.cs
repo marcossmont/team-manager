@@ -8,6 +8,6 @@ namespace TeamManager.Core.BusPublisher
 {
     public interface IBusPublisher
     {
-        Task Publish<T>(string queueName, T message, Hashtable headers);
+        Task Publish<T>(string queueName, T message, IDictionary<string, object> headers);
     }
 }
